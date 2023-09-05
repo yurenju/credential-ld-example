@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "start": "npx ts-node src/index.ts",
+    "start": "npx ts-node --esm src/index.ts",
     "update:veramo:next": "yarn add @veramo/core@next @veramo/credential-ld@next @veramo/credential-w3c@next @veramo/did-manager@next @veramo/did-provider-key@next @veramo/did-provider-ethr@next @veramo/did-resolver@next @veramo/key-manager@next @veramo/kms-local@next",
     "update:veramo:latest": "yarn add @veramo/core@latest @veramo/credential-ld@latest @veramo/credential-w3c@latest @veramo/did-manager@latest @veramo/did-provider-key@latest @veramo/did-provider-ethr@latest @veramo/did-resolver@latest @veramo/key-manager@latest @veramo/kms-local@latest"
   },
@@ -19,19 +19,25 @@
     "@types/jest": "29.5.4",
     "babel-jest": "29.6.4",
     "jest": "29.6.4",
+    "ts-node": "^10.9.1",
     "typescript": "5.2.2"
   },
   "dependencies": {
+    "@semaphore-protocol/group": "^3.11.0",
+    "@semaphore-protocol/identity": "^3.11.0",
+    "@semaphore-protocol/proof": "^3.11.0",
     "@types/node": "^18.0.0",
-    "@veramo/core": "^3.1.6-next.149",
-    "@veramo/credential-ld": "^3.1.6-next.149",
-    "@veramo/credential-w3c": "^3.1.6-next.149",
-    "@veramo/did-manager": "^3.1.6-next.149",
-    "@veramo/did-provider-ethr": "^3.1.6-next.149",
-    "@veramo/did-provider-key": "^3.1.6-next.149",
-    "@veramo/did-resolver": "^3.1.6-next.149",
-    "@veramo/key-manager": "^3.1.6-next.149",
-    "@veramo/kms-local": "^3.1.6-next.149"
+    "@veramo/core": "^5.4.1",
+    "@veramo/credential-ld": "^5.4.1",
+    "@veramo/credential-w3c": "^5.4.1",
+    "@veramo/did-manager": "^5.4.1",
+    "@veramo/did-provider-ethr": "^5.4.1",
+    "@veramo/did-provider-key": "^5.4.1",
+    "@veramo/did-provider-web": "^5.4.1",
+    "@veramo/did-resolver": "^5.4.1",
+    "@veramo/key-manager": "^5.4.1",
+    "@veramo/kms-local": "^5.4.1",
+    "web-did-resolver": "^2.0.27"
   },
   "repository": {
     "type": "git",
@@ -41,5 +47,6 @@
     "testMatch": [
       "**/__tests__/**/*.test.ts"
     ]
-  }
+  },
+  "type": "module"
 }

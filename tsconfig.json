@@ -1,14 +1,18 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "declaration": true,
-    "sourceMap": true,
-    "outDir": "lib",
+    "preserveConstEnums": true,
     "strict": true,
-    "useUnknownInCatchVariables": false,
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "skipLibCheck": true
+    "target": "esnext",
+    "module": "esnext",
+    "rootDir": "./",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "downlevelIteration": true
+    // "useUnknownInCatchVariables": false,
+    // "outDir": "lib",
+    // "resolveJsonModule": true,
+    // "skipLibCheck": true,
+    // "declaration": true,
+    // "sourceMap": true,
   }
 }

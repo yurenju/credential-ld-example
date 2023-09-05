@@ -1,28 +1,22 @@
-import {
-  createDID,
-  createEthrDID,
-  createLDCredential,
-  createLDCredentialWithEthrIssuer,
-  verifyLDCredential
-} from './credential-flow'
-import { setupAgent } from './setup';
+import { createLDCredential, verifyLDCredential } from "./credential-flow.js";
+import { setupAgent, setupIdentity } from "./setup.js";
+import { DID_METHOD, getDidKey } from "./Semaphore.js";
 
 (async () => {
+  const { identity, group } = setupIdentity();
   const agent = setupAgent();
-  const issuer = await createDID(agent)
-  console.log(`issuer created`, issuer.did)
-  const ethrIssuer = await createEthrDID(agent)
-  console.log(`ethr issuer created`, ethrIssuer.did)
 
-  const credential = await createLDCredential(issuer, agent)
-  console.log(`Credential issued`)
-  console.dir(credential)
-  const credentialEthr = await createLDCredentialWithEthrIssuer(ethrIssuer,agent)
-  console.log(`Credential issued`)
-  console.dir(credentialEthr)
-  const verified = await verifyLDCredential(credential, agent)
-  console.log(`Credential verified=${verified}`)
-  const verifiedEthrCredential = await verifyLDCredential(credentialEthr, agent)
-  console.log(`ETHR Credential verified=${verifiedEthrCredential}`)
+  const issuer = await agent.didManagerImport({
+    did: "did:web:yurenju.github.io:did-web",
+    provider: DID_METHOD,
+    keys: [getDidKey(identity)],
+  });
 
+  const credential = await createLDCredential(issuer, agent);
+  console.log(`Credential issued`);
+  console.dir(credential);
+  const verified = await verifyLDCredential(credential, agent);
+  console.log(`Credential verified=${JSON.stringify(verified, null, 2)}`);
+
+  return process.exit(0);
 })();
